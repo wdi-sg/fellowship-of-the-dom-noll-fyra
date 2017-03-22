@@ -62,6 +62,7 @@ function makeHobbits () {
 makeHobbits()
 
 // Part 3
+var ringClicks = 0
 
 function keepItSecretKeepItSafe () {
   // create a div with an id of 'the-ring'
@@ -70,9 +71,29 @@ function keepItSecretKeepItSafe () {
   // give the div a class of 'magic-imbued-jewelry'
   theRing.className = 'magic-imbued-jewelry'
   // add an event listener so that when a user clicks on the ring, the nazgulScreech function (provided) is invoked
-  theRing.addEventListener('click', nazgulScreech)
-  // add the ring as a child of Frodo
   var frodo = theShire.querySelectorAll('li')[0]
+  theRing.addEventListener('click', function () {
+    ringClicks += 1
+    nazgulScreech()
+    if (ringClicks == 3) {
+      // body.parentNode.removeChild(body)
+      while (body.hasChildNodes()) {
+    body.removeChild(body.lastChild);
+}
+var theEndOfAllThings = document.createElement('h1')
+      theEndOfAllThings.textContent = 'The Ring has been returned to Sauron and the world is over.'
+      theEndOfAllThings.textAlign = 'centre'
+      body.appendChild(theEndOfAllThings)
+    }
+    frodo.style.opacity = 0
+    frodo.style.transition = 'opacity 2s ease-in-out'
+    setTimeout(function() {
+      frodo.style.opacity = 1
+    }, 2000)
+    // frodo.style.opacity = 1
+    // frodo.style.transition = 'opacity 2s ease'
+  })
+  // add the ring as a child of Frodo
   frodo.appendChild(theRing)
 }
 
@@ -95,7 +116,7 @@ function makeBuddies () {
   // insert your aside as a child element of rivendell
 }
 
-makeBuddies()
+// makeBuddies()
 
 // Part 5
 
@@ -105,7 +126,7 @@ function beautifulStranger () {
   aragorn.textContent = 'Aragorn'
 }
 
-beautifulStranger()
+// beautifulStranger()
 
 // Part 6
 
@@ -116,7 +137,7 @@ function leaveTheShire () {
   rivendell.appendChild(theDeparted)
 }
 
-leaveTheShire()
+// leaveTheShire()
 
 // Part 7
 
@@ -133,7 +154,7 @@ function forgeTheFellowShip () {
   rivendell.appendChild(fellowship)
 }
 
-forgeTheFellowShip()
+// forgeTheFellowShip()
 
 // Part 8
 
@@ -147,7 +168,7 @@ function theBalrog () {
   gandalf.style.border = '3px solid grey'
 }
 
-theBalrog()
+// theBalrog()
 
 // Part 9
 
@@ -163,7 +184,7 @@ function hornOfGondor () {
   boromir.parentNode.removeChild(boromir)
 }
 
-hornOfGondor()
+// hornOfGondor()
 
 // Part 10
 
@@ -182,7 +203,7 @@ function itsDangerousToGoAlone () {
   mordor.appendChild(mountDoom)
 }
 
-itsDangerousToGoAlone()
+// itsDangerousToGoAlone()
 
 var mountDoom = body.querySelector('#mount-doom')
 
@@ -203,7 +224,7 @@ function weWantsIt () {
   mountDoom.appendChild(theLostHobbit)
 }
 
-weWantsIt()
+// weWantsIt()
 
 // Part 12
 
@@ -225,6 +246,6 @@ function thereAndBackAgain () {
   theShire.append(theScouring)
 }
 
-thereAndBackAgain()
+// thereAndBackAgain()
 
 window.addEventListener('click', hobbitTheme)
